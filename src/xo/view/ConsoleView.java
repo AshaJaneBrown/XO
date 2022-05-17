@@ -29,22 +29,33 @@ public class ConsoleView {
     }
 
     public void showGameInfo(final Game game) {
-        System.out.format("Game name: \"%s\"\n", game.getName());
+        printSeparator2();
+        showGameName(game);
         System.out.format("Player 1: %s, figure %s\n", game.getPlayers()[0].getName(), game.getPlayers()[0].getFigure());
         System.out.format("Player 2: %s, figure %s\n", game.getPlayers()[1].getName(), game.getPlayers()[1].getFigure());
+        System.out.println("Good luck!");
+        printSeparator2();
+    }
+
+    public void showGameName(final Game game) {
+        System.out.format("Game name: \"%s\"\n", game.getName());
     }
 
     public boolean move(final Game game) {
         final Field field = game.getField();
         final Figure winner = winnerController.getWinner(field);
         if (winner != null) {
-            System.out.printf("Game over! The winner is: %s \u263A", winner);
+            printSeparator2();
+            System.out.printf("Game over! The winner is: %s \u263A\n", winner);
+            printSeparator2();
             return false;
         }
 
         final Figure currentFigure = currentMoveController.currentMove(field);
         if (currentFigure == null) {
-            System.out.println("Game over! The game ended in a tie \u263A");
+            printSeparator3();
+            System.out.println("Game over! No winner, try again \u263A");
+            printSeparator3();
             return false;
         }
 
@@ -93,5 +104,13 @@ public class ConsoleView {
 
     private void printSeparator() {
         System.out.println("-----------");
+    }
+
+    private void printSeparator2() {
+        System.out.println("******************************");
+    }
+
+    private void printSeparator3() {
+        System.out.println("**********************************");
     }
 }
