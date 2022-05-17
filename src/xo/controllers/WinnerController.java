@@ -58,7 +58,9 @@ public class WinnerController {
         Point next(final Point point);
     }
 
-    /*    public Figure getWinner(final Field field) {
+    /*
+    Solution for only 3x3 field
+    public Figure getWinner(final Field field) {
         try {
             for (int i = 0; i < 3; i++)
                 if (check(field, new Point(i, 0), new Point(i, 1), new Point(i, 2)))
@@ -93,5 +95,6 @@ public class WinnerController {
             e.printStackTrace();
         }
         return false;
-    }*/
+    }
+    */
 }
